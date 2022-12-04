@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<style>
+div {
+  border: 2px solid black;
+  margin: 40px 200px 50px;
+ text-align: center;
+}
+</style>
+<head>
+  <title>Euclidean Algorithm</title>
+  
+<script>
+function add()
+{
+    
+  const euclid = function(num1, num2){
+    
+    var remainder = num1 % num2;
+    if(remainder == 0){
+        return num2;
+   
+    }else{
+        
+        num1 = num2;
+        num2 = remainder;
+       return euclid(num1, num2);
+    }
+}
+  num1 = parseInt(document.getElementById("first").value);
+  num2 = parseInt(document.getElementById("second").value);
+  
+  document.getElementById("answer").value = euclid(num1,num2);
+};
+</script>
+<script type="text/javascript">
+function eeuclid()
+{
+    
+  const exeuclid = function(n1, n2){
+  
+    var R=0;
+    var Q=0;
+    var t=0;
+    var t1=0;
+    var t2=1;
+    var r1=n1;
+
+    while(n2>0)
+    {
+        Q=Math.floor(n1/n2);
+        R=n1 % n2;
+        n1 = n2;
+        n2 = R;
+        t = t1 - (Q*t2);
+        t1=t2;
+        t2=t;
+  }
+  if(t1<0)
+    {
+        t1=t1+r1;
+    }
+    return t1;
+}
+  n1 = parseInt(document.getElementById("first1").value);
+  n2 = parseInt(document.getElementById("second1").value);
+  
+  document.getElementById("value").value = exeuclid(n1,n2);
+};
+</script>
+</head>
+<body>
+<div>
+  <h2>Euclidean Algorithm</h2>
+<p>Enter the First Number: <input id="first"></p>
+<p>Enter the Second Number: <input id="second"></p>
+<button onclick="add()">GCD</button>
+<p>GCD = <input id="answer"></p>
+</div>
+
+<div>
+  <h2>Extended Euclidean Algorithm</h2>
+<p>Enter the First Number: <input id="first1"></p>
+<p>Enter the Second Number: <input id="second1"></p>
+<button onclick="eeuclid()">GCD</button>
+<p>GCD = <input id="value"></p>
+</div>
+
+<p id="headerNavbar" class="d-none border-top flex-grow-1 d-lg-flex align-items-center">
+            <ul class="navbar-nav ml-auto text-center d-flex flex-md-row">
+             
+                <a href="index.html">Back</a>
+                            
+            </ul>
+          </p>
+</body>
+</html>
